@@ -9,12 +9,12 @@ import java.util.stream.Collectors;
 
 public class ProductFilter {
 
-    private final List<String> recalledProducts;
+    private static List<String> recalledProducts = null;
 
     public ProductFilter(List<String> recalledProducts) {
         if (recalledProducts == null) recalledProducts = new ArrayList<>();
 
-        this.recalledProducts = recalledProducts;
+        ProductFilter.recalledProducts = recalledProducts;
     }
 
     public List<Product> removeRecalled(Collection<Product> allProduct) {
@@ -22,10 +22,7 @@ public class ProductFilter {
     }
 
     private static boolean filterByName(Product product) {
-
-        if(recalledProducts.equals().contains(product.getName())){
-            return false;
-        }
+        return !recalledProducts.contains(product.getName());
 
     }
 }

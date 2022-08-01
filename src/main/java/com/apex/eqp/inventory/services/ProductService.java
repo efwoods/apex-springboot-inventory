@@ -27,7 +27,7 @@ public class ProductService {
 
     public Collection<Product> getAllProduct() {
         List<RecalledProduct> recalledProducts= recalledProductRepository.findAll();
-        List<String> recalledProductsNames = recalledProducts.stream().map(recalledProduct -> recalledProduct.getName()).collect(Collectors.toList());
+        List<String> recalledProductsNames = recalledProducts.stream().map(RecalledProduct::getName).collect(Collectors.toList());
 
         ProductFilter filter = new ProductFilter(recalledProductsNames);
         return filter.removeRecalled(inventoryRepository.findAll());
