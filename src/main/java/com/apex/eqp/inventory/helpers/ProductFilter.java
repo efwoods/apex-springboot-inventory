@@ -22,6 +22,10 @@ public class ProductFilter {
     }
 
     private static boolean filterByName(Product product) {
-        return true;
+
+        if(recalledProducts.equals().contains(product.getName())){
+            return false;
+        }
+
     }
 }

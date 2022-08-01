@@ -19,12 +19,17 @@ public class ProductService {
 
     private final InventoryRepository inventoryRepository;
 
+    private final RecalledProductRepository recalledProductRepository;
+
     public Product save(Product product) {
         return inventoryRepository.save(product);
     }
 
     public Collection<Product> getAllProduct() {
-        ProductFilter filter = new ProductFilter(null);
+        List<RecalledProduct> recalledProducts= recalledProductRepository.findAll();
+        List<String> recalledProductsNames = recalledProducts.stream().map(recalledProduct -> recalledProduct.getName()).collect(Collectors.toList());
+
+        ProductFilter filter = new ProductFilter(recalledProductsNames);
         return filter.removeRecalled(inventoryRepository.findAll());
     }
 
