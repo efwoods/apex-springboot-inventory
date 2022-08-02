@@ -69,11 +69,11 @@ class ProductServiceTests {
 
     @Test
     void threeProductsOneRecalled() {
-        Product product1 = createTestProduct("product1", 1.1, 1);
-        Product product2 = createTestProduct("product2", 1.2, 2);
-        Product product3 = createTestProduct("product3", 1.3, 3);
+        Product product1 = createTestProduct("product3", 1.1, 1);
+        Product product2 = createTestProduct("product4", 1.2, 2);
+        Product product3 = createTestProduct("product5", 1.3, 3);
 
-        RecalledProduct recalledProduct = createTestRecalledProduct("product1");
+        RecalledProduct recalledProduct = createTestRecalledProduct("product3");
         RecalledProduct savedRecalledProduct = recalledProductService.save(recalledProduct);
 
         productService.save(product1);
